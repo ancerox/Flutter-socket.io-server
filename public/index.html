@@ -21,12 +21,13 @@
         console.log('hemos perdido senal con el servidor ');
     });
 
-    socket.emit('mensaje', {mensaje: 'hola mundo'});
 
-    socket.on('presentacion', (payload)=>{
-        console.log(payload);
+
+   
+    socket.on('active-bands',function (payload) {
+        console.table(payload)
     });
-
+    
 
     </script>
 </body>

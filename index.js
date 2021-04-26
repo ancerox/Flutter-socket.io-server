@@ -6,6 +6,15 @@ require('dotenv').config();
 // app de express
 const app = express();
 
+// call mongo
+
+require('./database/config').dbconnection();
+
+
+// lectura del body
+
+app.use(express.json());
+
 
 // node server
 const server = require('http').createServer(app);
@@ -17,6 +26,13 @@ require('./sockets/socket.js');
 // path publico 
 const publicPath = path.resolve(__dirname , 'public');
 app.use(express.static(publicPath));
+
+
+
+// rustas 
+
+app.use('/api/login', require('./routes/auth'));
+
 
 
 //serve
